@@ -1,104 +1,22 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Abril+Fatface|Yrsa" rel="stylesheet"> 
-    <style>
-      body {
-        background-color: white;
-      }
     
-      #photograph { 
-        position: relative;
-        top: 10px;
-        width: 200px; 
-        height: 200px;
-        margin: auto;
-        background-image: url("https://i.imgur.com/KS1QHok.jpg");
-        background-size: 200px;
-        border-radius: 100px;
-      }
-      
-      #frame {
-        padding: 60px 0px 25px 0px;
-        position: relative;
-        margin: auto;
-        width: 600px;
-        height: 440px;
-        background-color: #white;
-      }
-      
-      #title {
-        margin: auto;
-        position: relative;
-        top: 20px;
-        color: #333333;
-        text-align: center;
-        font-family: 'Abril Fatface', sans-serif;
-        font-size: 40px;
-      }
-      
-      #subtitle {
-        position: relative;
-        top: 20px;
-        color: #888888;
-        text-align: center;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 16px;
-      }
-      
-      #maintext {
-        position: relative;
-        top: 80px;
-        margin: auto;
-        width: 600px;
-        color: #4a4a4a;
-        text-align: left;
-
-      }
-      
-      hr.style1 {
-        position: relative;
-        border-style: solid;
-        border-color: #cccccc; 
-      }
-      
-      a {
-        padding: 10px; 
-      }
-      
-      h1 {
-        font-family: 'Yrsa', serif;
-        font-size: 18px;
-        font-weight: 400;
-      }
-      
-      span.style1 {
-        position: relative;
-        top: -20px;
-        left: -10px;
-        font-family: 'Yrsa', serif;
-        font-size: 16px;
-        font-weight: 400;
-        color: #555555;
-      }
-      
-      span.style2 {
-        color: #575da9;
-        font-weight: 600;
-      }
-      
-    </style>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Abril+Fatface|Yrsa" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet" type="text/css">
     <title>Adam Gleave: Software Developer</title>
   </head>
+    
   <body>
     <div id="frame">
       <div id="photograph"></div>
-      <div id = "title">
-        Adam Gleave
+      <div id = "title">Adam Gleave</div>
+      <div id = "subtitle">Studying BSc Computer Science</div>
+      <div id="button">
+        <a class = "style2" href="projects.html">PROJECTS</a>    
       </div>
-      <div id = "subtitle">
-        Studying BSc Computer Science
-      </div>
-      <hr class="style1" style="top: 60px;">
+        
+      <hr class="style1" style="top: 70px;">
       <div id = "maintext">
         <h1>
           <p>
@@ -110,17 +28,19 @@
             <span class="style2">Languages</span>
             and 
             <span class="style2">frameworks</span>
-            include C++, C#, Java, Rust, Python, Oracle SQL, OpenGL, GLSL, Qt, .NET, and Swing.
+            include C++, C#, Java, Rust, Python, Oracle SQL, OpenGL, GLSL, Qt, .NET, and Swing. I'm also familar with HTML and CSS.
           </p>
         </h1>
       </div>
-      <hr class="style1" style="top: 105px;">
-      <div id="title" style="top: 150px; height: 180px;">
-        <a href="https://github.com/Adam-Gleave"><img src = "https://i.imgur.com/FbLvCnP.png" style="width: 50px" alt="LinkedIn"></a>
+      <hr class="style1" style="top: 115px;">
+
+      <div id="title" style="top: 150px;">
+        <a class="style1" href="https://github.com/Adam-Gleave"><img src="https://i.imgur.com/FbLvCnP.png" style="width: 50px" alt="LinkedIn"></a>
         <span class="style1">github</span>
-        <a href="https://www.linkedin.com/in/adam-gleave/"><img src = "https://i.imgur.com/x9Yq6P5.png" style="width: 50px" alt="LinkedIn"></a>
+        <a class = "style1" href="https://www.linkedin.com/in/adam-gleave/"><img src="https://i.imgur.com/x9Yq6P5.png" style="width: 50px" alt="LinkedIn"></a>
         <span class="style1">linkedin</span>
       </div>
     </div>
   </body>
+    
 </html>
