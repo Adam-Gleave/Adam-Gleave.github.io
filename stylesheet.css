@@ -6,7 +6,7 @@ body {
   position: relative;
   top: 50px;
   width: 90px;
-  height: 22px;
+  height: 20px;
   margin: auto;
   border-style: solid;
   border-color: #ff6600;
@@ -129,6 +129,7 @@ span.style2 {
   color: #575da9;
   font-weight: 600;
 } 
+
 h2 {
   font-family: 'Abril Fatface';
   font-size: 28px;
