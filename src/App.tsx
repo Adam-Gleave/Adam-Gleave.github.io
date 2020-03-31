@@ -76,11 +76,7 @@ function Terrain() {
   );
 }
 
-const calc = (x: any, y: any, cardX: number, cardY: number) => [
-  -(y - cardY) / 20, (x - cardX) / 20, 1.05
-];
-
-const trans: any = (x: any, y: any, s: any) => `perspective(1200px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+const trans: any = (s: any) => `scale(${s})`;
 
 type CardProps = {
   headerText: string,
@@ -96,37 +92,36 @@ function cardProps(headerText: string, imageUrl: string): CardProps {
   };
 }
 
-function Card(cardProps: CardProps) {
+const Card = (cardProps: CardProps) => {
+  const cardRef = useRef<any>(null);
+
   const [props, set] = useSpring(() => ({ 
-    xys: [0, 0, 1], 
-    config: { mass: 5, tension: 350, friction: 40 } 
+    s: 1, 
+    config: { mass: 1, tension: 100, friction: 10 } 
   }));
 
   function style(): React.CSSProperties {
     return {
       display: 'absolute',
-      transform: props.xys.interpolate(trans),
+      transform: props.s.interpolate(trans),
     };
   }
 
   return (
-    <animated.div
-    className="card"
-    style={style()}
-    onMouseMove={({ clientX: x, clientY: y }) => set ({ 
-      xys: calc(
-        x, y, 
-        window.innerWidth * (20 / 100), 
-        window.innerHeight * (60 / 100)
-      ) 
-    })}
-    onMouseLeave={() => set({ xys: [0, 0, 1] })}>
-      <div className="card-header">
-        {cardProps.headerText}
-        <hr className="card-header-line"></hr>
-        <div className="card-content" style={cardProps.style}></div>
-      </div>
-    </animated.div>
+    <>
+      <animated.div
+      ref={cardRef}
+      className="card"
+      style={style()}
+      onMouseMove={() => set ({ s: 1.1 })}
+      onMouseLeave={() => set({ s: 1 })}>
+        <div className="card-header">
+          {cardProps.headerText}
+          <hr className="card-header-line"></hr>
+          <div className="card-content" style={cardProps.style}></div>
+        </div>
+      </animated.div>
+    </>
   );
 }
 
