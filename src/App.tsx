@@ -128,7 +128,9 @@ const Card = (cardProps: CardProps) => {
 function App() {
   return (
     <div className="main">
-      <div className="header">Adam Gleave</div>
+      <div className="header">
+        Adam Gleave
+      </div>
       <Canvas>
         <Scene />
       </Canvas>
@@ -138,6 +140,21 @@ function App() {
           <Card {...cardProps("OpenCK", "https://imgur.com/Zfh3eDn.png")} />
           <Card {...cardProps("Rustbucket", "https://i.imgur.com/xCYk9h7.png")} />
           <Card {...cardProps("Voxels", "https://imgur.com/ucOoqnc.png")} />
+        </div>
+      </div>
+      <div>
+        <div className="footer-container">
+          <div className="footer">
+            <a href="https://github.com/Adam-Gleave/" target="_blank">
+              <img src={process.env.PUBLIC_URL + "/images/GitHub-Mark-Light-32px.png"} draggable={false} />
+            </a>
+            <a href="mailto:adamgleave97@gmail.com" >
+              <img src={process.env.PUBLIC_URL + "/images/mail-32.png"} draggable={false} />
+            </a>
+            <a href="https://www.linkedin.com/in/adam-gleave/" target="_blank">
+              <img src={process.env.PUBLIC_URL + "/images/linkedin-5-32.png"} draggable={false} />
+            </a>
+          </div>
         </div>
       </div>
     </div>
