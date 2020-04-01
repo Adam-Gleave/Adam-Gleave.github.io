@@ -68,7 +68,7 @@ body {
   height: 400px;
   background-color: #eeeeee;
   color: #16161f;
-  will-change: transform;
+  cursor: pointer;
 }
 
 .card-header {
