@@ -107,7 +107,9 @@ const CardFront = (props: CardFrontProps) => (
 
 type CardBackProps = {
   headerText: string,
+  description: string,
   toggleFlipped: () => void,
+  link: string,
 };
 
 const CardBack = (props: CardBackProps) => (
@@ -116,7 +118,12 @@ const CardBack = (props: CardBackProps) => (
       <div className="card-header" style={{display: "absolute"}}>
         {props.headerText}
         <hr className="card-header-line" />
-        <div className="card-content" />
+        <div className="card-text">
+          {props.description}
+        </div>
+        <div className="card-link">
+          <a href={props.link}>{props.link}</a>
+        </div>
       </div>
     </div>
   </Flipped>
@@ -124,7 +131,9 @@ const CardBack = (props: CardBackProps) => (
 
 type CardProps = {
   headerText: string,
-  url: string
+  description: string,
+  url: string,
+  link: string,
 };
 
 const Card = (cardProps: CardProps) => {
@@ -135,8 +144,7 @@ const Card = (cardProps: CardProps) => {
 
   const { transform, opacity } = useSpring({
     opacity: flipped ? 1 : 0,
-    transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg) scale(${scale})`,
-    config: { mass: 5, tension: 500, friction: 80 },
+    transform: `perspective(1200px) rotateX(${flipped ? 180 : 0}deg) scale(${scale})`,
   });
 
   function opacityFunc(o: any): number {
@@ -147,13 +155,13 @@ const Card = (cardProps: CardProps) => {
   }
 
   return (
-    <Flipper flipKey={flipped} spring="gentle">
+      <Flipper flipKey={flipped} spring="gentle">
       {flipped ? (
         <animated.div style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }}>
-          <CardBack headerText={cardProps.headerText} toggleFlipped={toggleFlipped} />
+          <CardBack headerText={cardProps.headerText} toggleFlipped={toggleFlipped} description={cardProps.description} link={cardProps.link}/>
         </animated.div>
       ) : (
-        <animated.div onMouseEnter={() => setScale(1.1)} onMouseLeave={() => setScale(1)} style={{ opacity: opacity.interpolate(o => opacityFunc(o)), transform }}>
+        <animated.div onMouseEnter={() => setScale(1.096)} onMouseLeave={() => setScale(1)} style={{ opacity: opacity.interpolate(o => opacityFunc(o)), transform }}>
           <CardFront {...makeProps(cardProps.headerText, cardProps.url, toggleFlipped)} />
         </animated.div>
       )}
@@ -162,6 +170,27 @@ const Card = (cardProps: CardProps) => {
 }
 
 function App() {
+  const openMwText = `OpenMW are working on bringing an open-source engine to The Elder Scrolls 3: Morrowind.
+                      There have been multiple releases, and are readily available to download. 
+                      As part of my contributions to this project, I have implemented various changes and
+                      interface improvements to the Construction Set — the level editor and modding toolkit.`;
+  
+  const openCkText = `I am the current director of the OpenCK project. Closely affiliated with the modding
+                      team \"Beyond Skyrim\", this project aims to create a more stable and user-friendly
+                      level/mod editor for The Elder Scrolls 5: Skyrim. Progress is currently heavily ongoing.`;
+  
+  const rustbucketText = `Rustbucket is a tiny, hobby-project kernel written in Rust as an educational dive into
+                          the language and operating system concepts. It is fully compatible with x86-64 hardware,
+                          with the only non-Rust code being the bootstrapping assembler. Current features include
+                          exception, fault, and interrupt handling, with the addition of a keyboard driver.
+                          Future features may include memory and page management and a console system.`;
+  
+  const voxelsText = `Procedural generation and computer graphics have been long-standing interests of mine.
+                      My most notable project in this area is a university submission consisting of an endless
+                      procedural terrain generator. This runs on multiple threads for fast generation, and 
+                      uses voxels and signed distance feels to represent the terrain volume. Surface extraction
+                      was achieved through an implementation of the \"Dual Contouring\" algorithm.`;
+
   return (
     <div className="main">
       <div className="header">
@@ -172,10 +201,10 @@ function App() {
       </Canvas>
       <div className="grid-container">
         <div className="grid">
-          <Card headerText="OpenMW" url="https://i.ytimg.com/vi/izlm2CAnCpY/maxresdefault.jpg" />
-          <Card headerText="OpenCK" url="https://imgur.com/Zfh3eDn.png" />
-          <Card headerText="Rustbucket" url="https://i.imgur.com/xCYk9h7.png" />
-          <Card headerText="Voxels" url="https://imgur.com/ucOoqnc.png" />
+          <Card headerText="OpenMW" url="https://i.ytimg.com/vi/izlm2CAnCpY/maxresdefault.jpg" description={openMwText} link="https://gitlab.com/OpenMW/openmw" />
+          <Card headerText="OpenCK" url="https://imgur.com/Zfh3eDn.png" description={openCkText} link="https://github.com/Open-CK/OpenCK" />
+          <Card headerText="Rustbucket" url="https://i.imgur.com/xCYk9h7.png" description={rustbucketText} link="https://github.com/Adam-Gleave/rustbucket" />
+          <Card headerText="Voxels" url="https://imgur.com/ucOoqnc.png" description={voxelsText} link="https://github.com/Adam-Gleave/SOFT356" />
         </div>
       </div>
       <div>

@@ -87,13 +87,29 @@ hr.card-header-line {
 }
 
 .card-content {
-  font-family: 'Lato', sans-serif;
-  color: #16161f;
-  padding: 10px;
   background-size: cover;
   display: block;
   height: 328px;
   flex-grow: 1;
+  align-content: center;
+  align-items: center;
+}
+
+.card-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12pt;
+  line-height: 24px;
+  color: #16161f;
+  display: block;
+  height: 250px;
+  flex-grow: 1;
+}
+
+.card-link {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12pt;
+  line-height: 24px;
+  text-align: center;
 }
 
 .footer-container {
